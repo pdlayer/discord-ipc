@@ -5,7 +5,7 @@
 ![Issues](https://img.shields.io/github/issues/pdlayer/discord-ipc?style=flat-square&color=red)
 ![Repo Size](https://img.shields.io/github/repo-size/pdlayer/discord-ipc?style=flat-square)
 ![Last Commit](https://img.shields.io/github/last-commit/pdlayer/discord-ipc?style=flat-square&color=green)
-# Discord IPC 
+# Discord ИПС 
 
 IPC дискорд джава нет жни и там ищо ну легковесная крч понял меня
 
@@ -53,23 +53,6 @@ dependencies {
 
 ## Использование
 
-```java
-DiscordRPC rpc = new DiscordRPC("CLIENT_ID"); // https://discord.dev
-rpc.start();
-
-rpc.updatePresence(p -> p
-    .type(ActivityType.PLAYING)
-    .details("Играет на сервере")
-    .state("В лобби")
-    .timer("05:20")
-    .large("larg icon", "Текст")
-    .small("smol_icon", "Игрок")
-    .party("party_id", 1, 5)
-    .button("Telegram", "https://t.me/...")
-    .button("Discord", "https://discord.gg/...")
-);
-
-rpc.stop();
-```
+пример использования в папках [example/](example/).
 
 ![Moe Counter](https://count.getloli.com/get/@pdlayer-discord-ipc?theme=moebooru)
