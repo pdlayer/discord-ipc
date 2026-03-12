@@ -15,7 +15,6 @@ public class WindowsConnection implements DiscordConnection {
                 p = new RandomAccessFile("\\\\?\\pipe\\discord-ipc-" + i, "rw");
                 break;
             } catch (IOException e) {
-                // Try next
             }
         }
         if (p == null) {

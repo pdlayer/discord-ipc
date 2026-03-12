@@ -32,7 +32,6 @@ public class UnixConnection implements DiscordConnection {
         }
 
         if (socketPath == null) {
-            // Last resort: check /tmp directly
             for (int i = 0; i < 10; i++) {
                 Path path = Path.of("/tmp", "discord-ipc-" + i);
                 if (Files.exists(path)) {

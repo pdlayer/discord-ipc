@@ -48,7 +48,6 @@ public class DiscordRPC {
         try {
             connectInternal();
         } catch (Exception e) {
-            // Silence connection errors during retry
         }
     }
 
@@ -82,7 +81,6 @@ public class DiscordRPC {
                     }
                 }
             } catch (IOException e) {
-                // Connection lost
             } finally {
                 handleDisconnect();
             }
@@ -102,7 +100,6 @@ public class DiscordRPC {
                 }
             }
         } catch (Exception e) {
-            // Json error
         }
     }
 

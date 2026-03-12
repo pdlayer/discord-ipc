@@ -22,7 +22,6 @@ public class RichPresence {
     private String spectateSecret;
     private List<Button> buttons;
 
-    // Геттеры (оставлю без изменений для совместимости)
     public String getDetails() { return details; }
     public String getState() { return state; }
     public ActivityType getType() { return type; }
@@ -67,7 +66,6 @@ public class RichPresence {
             return this;
         }
 
-        // Позволяет делать timer("5175:25")
         public Builder timer(String time) {
             long now = System.currentTimeMillis() / 1000L;
             rp.startTimestamp = now - TimeUtils.parseToSeconds(time);
@@ -75,7 +73,6 @@ public class RichPresence {
             return this;
         }
 
-        // Позволяет делать loop("12:00", "15:00")
         public Builder loop(String min, String max) {
             long now = System.currentTimeMillis() / 1000L;
             long minSec = TimeUtils.parseToSeconds(min);
@@ -84,7 +81,7 @@ public class RichPresence {
             if (diff > 0) {
                 long offset = (now % diff) + minSec;
                 rp.startTimestamp = now - offset;
-                rp.endTimestamp = null; // Или можно добавить end, если нужно видеть прогресс-бар
+                rp.endTimestamp = null;
             }
             return this;
         }
