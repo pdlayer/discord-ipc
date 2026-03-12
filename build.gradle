@@ -4,8 +4,8 @@ plugins {
 }
 
 group = 'pd.discordipc'
-version = '1.0.0'
-description = 'A lightweight Discord Rich Presence IPC client for Java'
+version = '1.0.1'
+description = 'дискорд интернациональное общение с процессором 2026 март'
 
 repositories {
     mavenCentral()
