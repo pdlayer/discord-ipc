@@ -1,0 +1,47 @@
+discord-ipc
+
+Lightweight Kotlin library for Discord IPC / Rich Presence.
+
+Requires Java 21.
+
+
+Installation
+
+Gradle
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.pdlayer:discord-ipc:1.0.1'
+}
+
+
+Maven
+
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.pdlayer</groupId>
+        <artifactId>discord-ipc</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+</dependencies>
+
+
+Gradle Kotlin
+
+repositories {
+    maven("https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.pdlayer:discord-ipc:1.0.1")
+}

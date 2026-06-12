@@ -1,11 +1,11 @@
 plugins {
-    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm' version '2.1.21'
     id 'maven-publish'
 }
 
-group = 'pd.discordipc'
+group = 'com.pdlayer'
 version = '1.0.1'
-description = 'дискорд интернациональное общение с процессором 2026 март'
+description = 'Lightweight Kotlin library for Discord IPC / Rich Presence'
 
 repositories {
     mavenCentral()
@@ -15,10 +15,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.11.0'
 }
 
+kotlin {
+    jvmToolchain(21)
+}
+
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
     withSourcesJar()
 }
 
@@ -30,6 +31,8 @@ publishing {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    compilerOptions {
+        freeCompilerArgs.add('-Xjsr305=strict')
+    }
 }
