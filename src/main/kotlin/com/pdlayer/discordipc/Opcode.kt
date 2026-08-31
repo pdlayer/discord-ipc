@@ -1,13 +1,14 @@
 package com.pdlayer.discordipc
 
-enum class Opcode {
-    HANDSHAKE,
-    FRAME,
-    CLOSE,
-    PING,
-    PONG;
+enum class Opcode(val wire: Int) {
+    HANDSHAKE(0),
+    FRAME(1),
+    CLOSE(2),
+    PING(3),
+    PONG(4);
 
     companion object {
-        fun fromInt(value: Int): Opcode = entries[value]
+        @JvmStatic
+        fun fromWire(value: Int): Opcode? = entries.firstOrNull { it.wire == value }
     }
 }

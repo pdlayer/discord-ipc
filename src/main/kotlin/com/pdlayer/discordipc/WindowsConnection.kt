@@ -13,23 +13,24 @@ class WindowsConnection @Throws(IOException::class) constructor() : DiscordConne
     @Throws(IOException::class)
     override fun write(opcode: Opcode, data: String) {
         val bytes = data.toByteArray(StandardCharsets.UTF_8)
-        val header = ByteArray(8)
-        val buffer = ByteBuffer.wrap(header).order(ByteOrder.LITTLE_ENDIAN)
-        buffer.putInt(opcode.ordinal)
+        val frame = ByteArray(FrameFormat.HEADER_SIZE + bytes.size)
+        val buffer = ByteBuffer.wrap(frame).order(ByteOrder.LITTLE_ENDIAN)
+        buffer.putInt(opcode.wire)
         buffer.putInt(bytes.size)
+        buffer.put(bytes)
 
-        pipe.write(header)
-        pipe.write(bytes)
+        pipe.write(frame)
     }
 
     @Throws(IOException::class)
     override fun read(): DiscordConnection.Response {
-        val header = ByteArray(8)
+        val header = ByteArray(FrameFormat.HEADER_SIZE)
         pipe.readFully(header)
 
         val buffer = ByteBuffer.wrap(header).order(ByteOrder.LITTLE_ENDIAN)
-        val opcode = Opcode.fromInt(buffer.getInt())
+        val opcode = FrameFormat.resolveOpcode(buffer.getInt())
         val length = buffer.getInt()
+        FrameFormat.checkPayloadSize(length)
 
         val data = ByteArray(length)
         pipe.readFully(data)
