@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.pdlayer:discord-ipc:1.1.0'
+    implementation 'com.github.pdlayer:discord-ipc:1.1.0'
 }
 
 
@@ -29,7 +29,7 @@ Maven
 
 <dependencies>
     <dependency>
-        <groupId>com.pdlayer</groupId>
+        <groupId>com.github.pdlayer</groupId>
         <artifactId>discord-ipc</artifactId>
         <version>1.1.0</version>
     </dependency>
@@ -43,5 +43,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.pdlayer:discord-ipc:1.1.0")
+    implementation("com.github.pdlayer:discord-ipc:1.1.0")
 }
